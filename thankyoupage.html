@@ -1,0 +1,45 @@
+<html>
+    <head>
+    <script>
+           var randNum=Math.floor(Math.random() * (10000)) + 1;
+            console.log(randNum);
+            console.log("vaildation succesful" );
+            function myFunction(){
+                var flag=0;
+                const val = document.querySelector('text').value;
+             if(val.match(randNum.value)){
+     
+                flag=1;
+                }
+            else{
+                function fun(){
+                document.getElementById("myForm").reset(); 
+            }
+                return false;
+            }
+                if(flag==1){
+	 alert("Vaildation succesfull");
+                   
+ return true;
+                }
+            }
+    
+            function printMessage(){
+                var userName = localStorage.getItem("Uname").split(" ");
+                var phonenumber = localStorage.getItem("Pnum");
+                document.getElementById("message").innerHTML = "dear "+userName[0]+" thankyou for your inquiry. A 4 digit verification number has been sent to your phonenumber "+ phonenumber
+            }
+    
+    </script>
+    </head>
+    <body onload="printMessage()">
+        <p id="message"></p>
+        <form name="myForm" onreset="fun()" >
+        <label for="lbl1" >OTP</label><input type="text" id="otp">
+    
+        <button onclick="fun()" formaction="http://pixel6.com.bird.jpg" >Reset</button>
+        <button onclick="myFunction()"formaction="http://pixel6.co/" >Vaildate</button>
+        </form>
+    
+    </body>
+    </html>
