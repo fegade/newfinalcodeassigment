@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.form{
+  margin-left: auto;
+  margin-right: auto;
+	display:block;
+}
+.center{
+	text-align:center;
+
+	}
+.input{[type=text]
+	text-align:center;
+
+
+}
+</style>
+</head>
+<script type="text/javascript">
+    function validateForm(){
+        var username = document.getElementById("uname");
+        var email = document.getElementById("email");
+        var phonenumber = document.getElementById("pnumber");
+        var flag = 0;
+
+        var usercheck = /^((\b[a-zA-Z]{4,40}\b)\s*){2,}$/
+        var emailcheck = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        var phonenumbercheck = /^(?:\(\d{3}\)|\d{3}-)\d{3}-\d{4}$/;
+
+        if(usercheck.test(username.value)){
+            localStorage.setItem("Uname",username.value);
+            flag = 1;
+        }
+        else{
+            username.style.border = "solid 2px red";
+            document.getElementById("userlbl").style.visibility = "visible";
+            return false;
+        }
+
+        if(emailcheck.test(email.value)){
+            localStorage.setItem("Email",email.value);
+            flag = 1;
+        }
+        else{
+            email.style.border = "solid 2px red";
+            document.getElementById("emaillbl").style.visibility = "visible";
+            return false;
+        }
+
+        if(phonenumbercheck.test(phonenumber.value)){
+            localStorage.setItem("Pnum",phonenumber.value);
+            flag = 1;
+        }
+        else{
+            phonenumber.style.border = "solid 2px red";
+            document.getElementById("phonenumberlbl").style.visibility = "visible";
+            return false;
+        }
+
+        if(flag == 1){
+            return true;
+        }
+    }
+function myFunction1(){
+var x=document.getElementById("uname");
+x.value=x.value.toUpperCase();
+}
+function myFunction2(){
+var y=document.getElementById("email");
+y.value=y.value.toUpperCase();
+}
+</script>
+
+<body>
+
+<h2 style="text-align:center" color:"red" width:50px height:30px>Personal Detail Page</h2>
+<div class="center">
+<form id="myform"action="thankyoupage.html" onsubmit="return validateForm();" >
+  <label for="uname" style=font-width:500>First name:</label><br>
+  <input type="text" id="uname" name="uname" placeholder="Username" onblur="myFunction1()" >
+  <label id="userlbl" style="color: red; visibility: hidden;">Invalid username</label>
+  <br>
+
+  <label for="email" style=font-width:500>Email:</label><br>
+  <input type="text" id="email" name="email" placeholder="email" onblur="myFunction2()">
+  <label id="emaillbl" style="color: red; visibility: hidden;">Invalid email</label>
+  <br>
+
+  <label for="phonenumber" style=font-width:500>Phone number:</label><br>
+  <input type="text" id="pnumber" name="phonenumber" placeholder="Mob number">
+  <label id="phonenumberlbl" style="color: red; visibility: hidden;">Invalid phonenumber</label>
+  <br>
+
+  <button type="submit">Submit</button>
+</form> 
+</div>
+
+
+</body>
+</html>
